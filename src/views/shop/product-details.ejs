@@ -1,0 +1,40 @@
+<%- include('../includes/header.ejs'); -%>
+
+<%- include('../includes/navbar.ejs'); -%> 
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <div class=" mt-4 ml-4">
+                                <img src="\<%= product.picURL %>" class="card-img" alt="...">
+                                <h5 style="width: fit-content; display: block;" class="card-title mx-auto mt-2"><%= product.title %> </h5>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="ml-3 mr-3">
+                                <div class="form-group d-flex justify-content-between flex-row bd-highlight mt-4 mr-4">
+                                    <div class="card-body pt-3">                                
+                                        <p class="card-text">
+                                            <%= product.description %>
+                                        </p>
+                                        <p class="card-text"><small class="text-muted">Price: <%= product.price %></small></p>
+                        
+                                    </div>
+                                    <% if (isAdmin) {%>
+                                        <%- include('../includes/add-to-cart.ejs', { item: product }); -%>
+                                    <%} %> 
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('../includes/scripts.ejs'); -%>

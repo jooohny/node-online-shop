@@ -1,0 +1,11 @@
+.vscode
+node_modules
+key.pem
+cert.pem
+nodemon.json
+.prettierrc
+.eslintrc.json
+access.log
+.env
+images/*
+Procfile

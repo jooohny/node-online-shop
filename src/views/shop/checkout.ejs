@@ -1,0 +1,32 @@
+<%- include('../includes/header.ejs'); -%>
+<%- include('../includes/navbar.ejs'); -%> 
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 mt-2">
+                <% if (products.length > 0) {%>
+                    <ul class="list-group">
+                        <% for (const item of products) {%>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>
+                                    <%= item.productInfo.title %> 
+                                    <span class="badge badge-dark">x<%= item.qty %></span>
+                                </span>
+                                <span class="badge">Price: <%= item.productInfo.price %>$</span>
+                            </li>
+                        <%} %>
+                    </ul>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span>Total Price:<%= totalPrice %>$</span>
+                        <button class="btn btn-primary mt-2 orderBtn" onclick="checkout('<%= session.id %>')">Place order!</button>
+                    </div>
+                <%} else {%>
+                    <h1>No products in your cart!</h1>
+                <%} %>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="checkout.js"></script>
+<%- include('../includes/scripts.ejs'); -%>

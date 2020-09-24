@@ -1,0 +1,16 @@
+<%- include('../includes/header.ejs'); -%>
+<%- include('../includes/navbar.ejs', { csrf }); -%>
+<main>
+    <div class="container pt-5">
+        <div>
+            <h1>Oops..Problems on the server side.</h1>
+            <p class="lead"><%=error %></p>
+        </div>
+        <div class="row">
+            <div class="col text-center mb-4 fixed-bottom">
+                Velikiy Novgorod, 2020                        
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('../includes/scripts.ejs'); -%>

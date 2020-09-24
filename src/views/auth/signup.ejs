@@ -1,0 +1,55 @@
+<%- include('../includes/header.ejs'); -%>
+<%- include('../includes/navbar.ejs'); -%>      
+<main>
+    <div class="row justify-content-center">
+        <div class="col-3 pt-4">
+            <% if (errors.length > 0) { %>
+
+                <ul class="list-group mb-3">
+                    <% for (const err of errors) {%>
+                        <li class="list-group-item list-group-item-danger"><%= err.msg %></li>
+                    <%} %>
+                </ul>
+        <% } %>
+            <hr>
+            <form action="/auth/signup" method="post" novalidate>
+                <div class="form-group">
+                    <input
+                    required type="email"
+                    class="form-control"
+                    name="email"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter e-mail">
+                    <small id="emailHelp" class="form-text text-muted">Your information will never be disclosed to third parties.</small>
+                </div>
+
+                <!-- <div class="form-group">
+                    <input required type="text" class="form-control" id="firstName" placeholder="Имя">
+                </div>
+
+                <div class="form-group">
+                    <input required type="text" class="form-control" id="lastName" placeholder="Фамилия">
+                </div> -->
+                <div class="form-group">
+                    <input
+                    required type="password"
+                    class="form-control"
+                    name="password"
+                    aria-describedby="passHelp"
+                    placeholder="Password">
+                    <small id="passHelp" class="form-text text-muted">At least 6 characters long.</small>
+                </div>
+                <div class="form-group">
+                    <input required type="password" class="form-control" name="rePassword" placeholder="Confirm password">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="_csrf" value="<%= csrf %>">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-outline-dark">Sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<%- include('../includes/scripts.ejs'); -%>

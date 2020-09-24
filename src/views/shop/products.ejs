@@ -1,0 +1,43 @@
+<%- include('../includes/header.ejs'); -%>
+<%- include('../includes/navbar.ejs', { csrf }); -%> 
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <% if (products.length > 0) { %>
+                    <% for (const item of products) { %>  
+                        <div class="card mt-4" style="width: 17rem; display: inline-block;">
+                            <img src="\<%=item.picURL %>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%=item.title %></h5>
+                                <p class="card-text"><%=item.price %></p>
+                                <a href="/product/<%=item.id%>" class="btn btn-primary">Details</a>
+                                <% if (isAdmin) {%>
+                                    <%- include('../includes/add-to-cart.ejs', { item }); -%> 
+                                <%} %>
+                            </div>
+                        </div>
+                    <% } %>
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/?page=1">1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/?page=2">2</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#">3</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">4</a>
+                        </li>
+                    </ul> -->
+                <% } else { %>
+                    <h1>No Data Found!</h1>
+                <% } %>   
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('../includes/scripts.ejs'); -%>

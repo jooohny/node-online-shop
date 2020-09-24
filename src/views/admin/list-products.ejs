@@ -1,0 +1,31 @@
+<%- include('../includes/header.ejs'); -%>
+<%- include('../includes/navbar.ejs'); -%> 
+<main>
+    <% if (products.length > 0) { %>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="d-flex align-items-start flex-column text-center">
+                    <% for (const item of products) { %>  
+                        <div class="card mt-4" style="width: 18rem;">
+                            <img src="\<%=item.picURL %>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%=item.title %></h5>
+                                <p class="card-text"><%=item.price %></p>
+                                <a href="/admin/edit-product/<%= item._id %>" class="btn btn-primary">Edit</a>
+                                <input type="hidden" name="_id" value="<%= item._id %>">
+                                <input type="hidden" name="_csrf" value="<%= csrf %>">
+                                <button class="btn btn-primary delete">Delete</a>                           
+                            </div>
+                        </div>
+                    <% } %> 
+                </div>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="container pt-5">
+            <h1>No Data Found!</h1>
+        </div>
+    <% } %>   
+</main>
+<script src="/admin.js"></script>
+<%- include('../includes/scripts.ejs'); -%>	
